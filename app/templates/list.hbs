@@ -1,20 +1,14 @@
-<h1>Todos los alumnos</h1>
-{{#link-to 'login'}}
-	Go to login :v
-{{/link-to}}
+{{#each model as |book|}}
+	{{book-display
+		book=book
+		onBookDelete=(action 'onBookDelete')
+	}}
+{{/each}}
 
 <br>
+<hr>
 <br>
-<br>
-
-<ul>
-	{{#each students as |student|}}
-		<li>
-			<p>Name: {{student.name}}</p>
-			<p>LastName: {{student.lastName}}</p>
-			<button {{action 'removeStudent' student on='click'}}>kill me</button>
-		</li>
-	{{/each}}
-</ul>
-
-<button {{action 'addStudent' on='click'}}>Add student</button>
+<form {{action 'createStudent' on='submit'}}>
+	{{input type='text' value=name}}
+	<button type="submit">Crear alumno</button>
+</form>

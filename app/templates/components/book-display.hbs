@@ -1,0 +1,6 @@
+<img src="{{book.imgUrl}}">
+<h1>title: {{book.title}}</h1>
+<p>author: {{book.author}}</p>
+<p>price: ${{book.price}}.00</p>
+
+<button {{action 'deleteBook' book on='click'}}>delete book</button>

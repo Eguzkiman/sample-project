@@ -1,9 +1,11 @@
 import Controller from '@ember/controller';
 
 export default Controller.extend({
+	isSaving: false,
 	actions: {
-		onBookDelete (book) {
-			book.destroyRecord();
-		}
+		saveStudent (student) {
+			this.set('isSaving', true);
+			student.save();
+		},
 	}
 });

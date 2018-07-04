@@ -1,10 +1,14 @@
+<h3>grades:</h3>
+{{#each grades as |grade|}}
+	<p>{{grade}}</p>
+{{/each}}
+<h3>promedio {{average}}</h3>
 <form {{action 'saveStudent' model on='submit'}}>
 	<h1>Student Detail</h1>
 	<p>name: {{input type="text" value=model.name}}</p>
 	<p>lastName: {{input type="text" value=model.lastName}}</p>
 	<p>curp: {{input type="text" value=model.curp}}</p>
 
-	
 	<button type="submit" disabled="{{if model.isSaving 'true' ''}}">Save</button>
 	
 </form>

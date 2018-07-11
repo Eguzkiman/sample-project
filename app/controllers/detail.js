@@ -12,9 +12,16 @@ export default Controller.extend({
 	}),
 
 	actions: {
-		saveStudent (student) {
+		save (book) {
 			this.set('isSaving', true);
-			student.save();
+			book.save();
 		},
+		showAuthors () {
+			this.toggleProperty('isChangingAuthor');
+		},
+		selectAuthor (author) {
+			let book = this.get('model.musicBook');
+			book.set('author', author);
+		}
 	}
 });

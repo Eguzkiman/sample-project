@@ -1,5 +1,5 @@
 <img src="{{book.imgUrl}}">
-<h1>title: {{upper-case book.title}}</h1>
+<h1>title: {{#link-to 'detail' book.id}} {{upper-case book.title}} {{/link-to}}</h1>
 <p>author: {{book.author.fullName}}</p>
 <p>price: ${{book.price}}.00</p>
 

@@ -1,14 +1,24 @@
-<h3>grades:</h3>
-{{#each grades as |grade|}}
-	<p>{{grade}}</p>
-{{/each}}
-<h3>promedio {{average}}</h3>
-<form {{action 'saveStudent' model on='submit'}}>
-	<h1>Student Detail</h1>
-	<p>name: {{input type="text" value=model.name}}</p>
-	<p>lastName: {{input type="text" value=model.lastName}}</p>
-	<p>curp: {{input type="text" value=model.curp}}</p>
+<h1>Book Detail</h1>
+<img src="{{model.musicBook.imgUrl}}">
+<form {{action 'save' model.musicBook on='submit'}}>
+	<p>title: {{input type="text" value=model.musicBook.title}}</p>
+	<p>price: {{input type="number" value=model.musicBook.price}}</p>
 
-	<button type="submit" disabled="{{if model.isSaving 'true' ''}}">Save</button>
+	{{!-- Cambiar el author omg --}}
+	<p>
+		autor: {{model.musicBook.author.fullName}}
+		<button {{action 'showAuthors' on='click'}}>Cambiar de autor</button>
+	</p>
+	
+	{{#if isChangingAuthor}}
+		<p>Selecciona un autor</p>
+		{{#each model.authors as |author|}}
+			<p>
+				<a href="#" {{action 'selectAuthor' author on='click'}}>{{author.fullName}}</a>
+			</p>	
+		{{/each}}
+	{{/if}}
+
+	<button type="submit" disabled="{{if model.musicBook.isSaving 'true' ''}}">Save</button>
 	
 </form>
